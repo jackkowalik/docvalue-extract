@@ -1,4 +1,4 @@
-# docfield-extract
+# docvalue-extract
 
 Field-level value extraction for identity documents. Given a document
 image, it returns the filled-in value fields like name, date of birth,
