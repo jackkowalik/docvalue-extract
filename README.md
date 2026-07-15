@@ -3,7 +3,8 @@
 Field-level value extraction for identity documents. Given a document
 image, it returns the filled-in value fields like name, date of birth,
 document number, address, each with a bounding box, a semantic type,
-the recognized text, and per character bounding boxes.
+the recognized text, and per character bounding boxes. On a 5090, this
+pipeline takes under 10 seconds but above 5 to run end-to-end.
 
 ## Example
 
