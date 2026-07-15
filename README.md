@@ -5,6 +5,14 @@ image, it returns the filled-in value fields like name, date of birth,
 document number, address, each with a bounding box, a semantic type,
 the recognized text, and per character bounding boxes.
 
+## Example
+
+Extracted value-field boxes on a public EdisonTD specimen (Albania ID).
+Green = name, orange = date, red = ID number, grey = other. Printed
+labels are correctly left unboxed.
+
+![Extracted value fields](examples/sample_output.png)
+
 ## Why value fields and not the whole document?
 
 This pipeline prepares a document for a downstream fraud classifier.
