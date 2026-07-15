@@ -60,10 +60,11 @@ per-document-type results: https://authorize.earth/products/benchmarks/
 ## Smaller models
 
 The VLM is swappable via `--vlm-model`. In brief testing, the smaller
-Qwen2.5-VL-3B holds up on field detection (it finds the same values and
-still skips the labels) but is less reliable at typing fields (dates and
-ID numbers get labeled `other`) and drops some short, low-signal fields.
-The 7B default is used because it types fields reliably.
+Qwen2.5-VL-3B holds up on field detection (it looked over a few of the 
+true value fields 7B caught, but still skips the labels). It is less 
+reliable at typing fields (dates and ID numbers get labeled `other`) 
+and drops some short, low-signal fields. The 7B default is used because
+it types fields reliably and is properly benchmarked.
 
 ## Install
 
