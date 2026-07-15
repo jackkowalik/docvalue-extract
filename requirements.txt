@@ -1,0 +1,10 @@
+torch>=2.1
+transformers>=4.49
+accelerate
+qwen-vl-utils
+easyocr
+opencv-python
+numpy
+Pillow
+# flash-attn: install separately, needs a matching CUDA/torch build:
+#   pip install flash-attn --no-build-isolation
