@@ -3,7 +3,7 @@
 Field-level value extraction for identity documents. Given a document
 image, it returns the filled-in value fields like name, date of birth,
 document number, address, each with a bounding box, a semantic type,
-the recognized text, and per character bounding boxes. On a 5090, a
+the recognized text, and per character bounding boxes. On an RTX 5080, a
 single document runs end-to-end in roughly 5-10 seconds once the model
 is loaded.
 
@@ -17,14 +17,17 @@ labels are correctly left unboxed.
 
 ## Why value fields and not the whole document?
 
-This pipeline prepares a document for a downstream fraud classifier.
-Consider a legitimate government issued document that an individual has
+The original purpose of this pipeline was to prepare a document for a downstream fraud classifier focused on 
+text-manipulation. Consider a legitimate government issued document that an individual has
 altered to hide or change their identity. The edits are in the values,
 like a date pushed forward by two years, or a swapped name, and not the
 printed template labels, the document layout, or other substrate
 characteristics. Working at the field level, rather than on the
 whole-document image, is what lets downstream classifiers run across
-issuing authorities, and reduces the input variation they have to handle.
+issuing authorities, and reduces the input variation they have to handle. Although the pipeline was
+initially meant to feed classifiers, it applies anywhere you need structured values out of visually varied
+documents. A few that come to mind are PII redaction (it locates every sensitive field), dataset creation, and accessibility for
+visually impaired users.
 
 ## How it works
 
@@ -60,11 +63,11 @@ per-document-type results: https://authorize.earth/products/benchmarks/
 ## Smaller models
 
 The VLM is swappable via `--vlm-model`. In brief testing, the smaller
-Qwen2.5-VL-3B holds up on field detection (it looked over a few of the 
-true value fields 7B caught, but still skips the labels). It is less 
-reliable at typing fields (dates and ID numbers get labeled `other`) 
-and drops some short, low-signal fields. The 7B default is used because
-it types fields reliably and is properly benchmarked.
+Qwen2.5-VL-3B still finds most value fields and still skips the labels,
+but it misses a few short, low-signal fields the 7B catches, and it is
+less reliable at typing (dates and ID numbers get labeled `unknown`).
+The 7B default is used because it types fields reliably and is the
+version that is benchmarked.
 
 ## Install
 
