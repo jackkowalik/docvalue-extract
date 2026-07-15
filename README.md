@@ -3,7 +3,7 @@
 Field-level value extraction for identity documents. Given a document
 image, it returns the filled-in value fields like name, date of birth,
 document number, address, each with a bounding box, a semantic type,
-the recognized text, and per character bounding boxes. On an RTX 5080, a
+the recognized text, and per character bounding boxes. On an RTX 5090, a
 single document runs end-to-end in roughly 5-10 seconds once the model
 is loaded.
 
